@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+import org.eclipse.jdt.internal.compiler.batch.Main;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,8 +20,9 @@ import static org.junit.Assert.*;
  */
 public class DenunciaTest {
 
-    Denuncia d0;
-    Denuncia d1;
+    Denuncia d, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10;
+    ArrayList<String> tipo = new ArrayList<>();
+    String frase, fraseMaior, titulo, tituloMaior, tipoErrado, foto;
 
     public DenunciaTest() {
     }
@@ -34,23 +37,24 @@ public class DenunciaTest {
 
     @Before
     public void setUp() {
-        d0 = new Denuncia(0, "Denuncia 0", "descricaoDenuncia", "foto.png", "abandono", " localizacao");
-        d1 = new Denuncia(1, "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
-                "The Inuit and Yupik people carved Inuit snow goggles from caribou antler, wood, and shell to help prevent snow blindness. "
+        titulo = "titulo";
+        tituloMaior = "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk";
+        tipo.add("Abandono");
+        tipo.add("Maus Tratos");
+        tipoErrado = "tipoErrado";
+        foto = "foto.png";
+        frase = "frase";
+        fraseMaior = "The Inuit and Yupik people carved Inuit snow goggles from caribou antler, wood, and shell to help prevent snow blindness. "
                 + "The goggles were curved to fit the user's face and had a large groove cut in the back to allow for the nose. A long thin slit was cut through the "
                 + "goggles to allow in a small amount of light, diminishing subsequent ultraviolet rays. The goggles were held to the head by a cord made of caribou sinew."
                 + "In the early 20th century, goggles were worn by drivers of uncovered cars to prevent irritation of the eyes by dust or wind.[1] Likewise in the first ten years after t"
                 + "he invention of the airplane in 1903 goggles became a necessity as wind blow became more severe as aircraft speeds increased and as "
                 + "protection against bugstrikes at high altitudes. The first pilot to wear goggles was probably Charles Manly in his failed attempt to fly Samuel"
-                + " Langley's aerodrome in 1903.",
-                "foto.bit", "outra coisa",
-                "The Inuit and Yupik people carved Inuit snow goggles from caribou antler, wood, and shell to help prevent snow blindness. "
-                + "The goggles were curved to fit the user's face and had a large groove cut in the back to allow for the nose. A long thin slit was cut through the "
-                + "goggles to allow in a small amount of light, diminishing subsequent ultraviolet rays. The goggles were held to the head by a cord made of caribou sinew."
-                + "In the early 20th century, goggles were worn by drivers of uncovered cars to prevent irritation of the eyes by dust or wind.[1] Likewise in the first ten years after t"
-                + "he invention of the airplane in 1903 goggles became a necessity as wind blow became more severe as aircraft speeds increased and as "
-                + "protection against bugstrikes at high altitudes. The first pilot to wear goggles was probably Charles Manly in his failed attempt to fly Samuel"
-                + " Langley's aerodrome in 1903.");
+                + " Langley's aerodrome in 1903.";
+
+        d0 = new Denuncia(0, titulo, frase, foto, tipo.get(0), frase);
+        d = new Denuncia(1, null, frase, foto, tipo.get(0), frase);
+         d2 = new Denuncia(2, tituloMaior, frase, foto, tipo.get(0), frase);
     }
 
     @After
@@ -58,125 +62,65 @@ public class DenunciaTest {
     }
 
     /**
-     * Test of getIdDenuncia method, of class Denuncia.
+     * Teste de validação do titulo, da classe Denuncia.
      */
     @Test
-    public void testGetIdDenuncia() {
-
+    public void testTituloDenuncia() {
+        System.out.println("TITULO");
+        if( d.getTituloDenuncia() != null) {
+            System.out.println("Titulo não é nulo");
+            if(!maior(d.getTituloDenuncia(), 30)){
+            System.out.println("Tamanho dentro do esperado: " + d.getTituloDenuncia().length() + "\n");    
+            }else{
+               System.out.println("Tamanho maior que o esperado: " + d.getTituloDenuncia().length() + "\n");    
+            }
+        }else
+              System.out.println("Campo nulo");    
     }
 
     /**
-     * Test of setIdDenuncia method, of class Denuncia.
+     * Teste de validação da descrção, da classe Denuncia.
      */
     @Test
-    public void testSetIdDenuncia() {
-
+    public void testDescricaoDenuncia() {
+        System.out.println("DESCRIÇÃO");
+         if( d.getDescricaoDenuncia()!= null) {
+            System.out.println("Descrição não é nulo");
+            if(!maior(d.getDescricaoDenuncia(), 255)){
+            System.out.println("Tamanho dentro do esperado: "+ d.getDescricaoDenuncia().length() + "\n");    
+            }else{
+               System.out.println("Tamanho maior que o esperado: " + d.getDescricaoDenuncia().length() + "\n");    
+            }
+        }else
+              System.out.println("Campo nulo");
     }
 
     /**
-     * Test of getTituloDenuncia method, of class Denuncia.
+     * Teste de validação do tipo, da classe Denuncia.
      */
     @Test
-    public void testGetTituloDenuncia() {
-
+    public void testTipoDenuncia() {
+        if( tipo.contains( d.getTipoDenuncia()))
+            System.out.println("Campo válido");
+        else
+            System.out.println("Campo válido" + d.getTipoDenuncia()); 
     }
 
     /**
-     * Test of setTituloDenuncia method, of class Denuncia.
+     * Teste de validação do localizacao, da classe Denuncia.
      */
     @Test
-    public void testSetTituloDenuncia() {
-
-    }
-
-    /**
-     * Test of getDescricaoDenuncia method, of class Denuncia.
-     */
-    @Test
-    public void testGetDescricaoDenuncia() {
-
-    }
-
-    /**
-     * Test of setDescricaoDenuncia method, of class Denuncia.
-     */
-    @Test
-    public void testSetDescricaoDenuncia() {
-
-    }
-
-    /**
-     * Test of getFotoDenuncia method, of class Denuncia.
-     */
-    @Test
-    public void testGetFotoDenuncia() {
-
-    }
-
-    /**
-     * Test of setFotoDenuncia method, of class Denuncia.
-     */
-    @Test
-    public void testSetFotoDenuncia() {
-
-    }
-
-    /**
-     * Test of getTipoDenuncia method, of class Denuncia.
-     */
-    @Test
-    public void testGetTipoDenuncia() {
-
-    }
-
-    /**
-     * Test of setTipoDenuncia method, of class Denuncia.
-     */
-    @Test
-    public void testSetTipoDenuncia() {
-
-    }
-
-    /**
-     * Test of getDataDenuncia method, of class Denuncia.
-     */
-    @Test
-    public void testGetDataDenuncia() {
-
-    }
-
-    /**
-     * Test of setDataDenuncia method, of class Denuncia.
-     */
-    @Test
-    public void testSetDataDenuncia() {
-
-    }
-
-    /**
-     * Test of getLocalizacao method, of class Denuncia.
-     */
-    @Test
-    public void testGetLocalizacao() {
-
-    }
-
-    /**
-     * Test of setLocalizacao method, of class Denuncia.
-     */
-    @Test
-    public void testSetLocalizacao() {
-
-    }
-
-    @Test
-    public void testCadTamCampo() {
-        assertFalse(maior(d0.getTituloDenuncia(), 30));
-        assertFalse(maior(d0.getDescricaoDenuncia(), 255));
-        assertFalse(maior(d0.getLocalizacao(), 255));
-        assertTrue(maior(d1.getTituloDenuncia(), 30));
-        assertTrue(maior(d1.getDescricaoDenuncia(), 255));
-        assertTrue(maior(d1.getLocalizacao(), 255));
+    public void testLocalizacaoDenuncia() {
+          System.out.println("LOCALIZAÇÃO");
+         if( d.getDescricaoDenuncia()!= null) {
+            System.out.println("Descrição não é nulo");
+            if(!maior(d.getLocalizacao(), 255)){
+            System.out.println("Tamanho dentro do esperado: "+ d.getLocalizacao().length() + "\n");    
+            }else{
+               System.out.println("Tamanho maior que o esperado: " + d.getLocalizacao().length() + "\n");    
+            }
+        }else
+              System.out.println("Campo nulo");
     }
 
     public boolean maior(String s, int i) {
@@ -188,5 +132,5 @@ public class DenunciaTest {
         }
         return a;
     }
-
+ 
 }
