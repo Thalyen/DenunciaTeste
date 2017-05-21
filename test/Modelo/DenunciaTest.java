@@ -122,6 +122,17 @@ public class DenunciaTest {
         }else
               System.out.println("Campo nulo");
     }
+    
+    @Test
+    public void testNull(){
+        // Testando campos null para Título, Descrição e Localizaçao
+        assertNotNull(d1.getTituloDenuncia());
+        assertNotNull(d0.getTituloDenuncia());
+        assertNotNull(d1.getDescricaoDenuncia());
+        assertNotNull(d0.getDescricaoDenuncia());
+        assertNotNull(d1.getLocalizacao());
+        assertNotNull(d0.getLocalizacao());
+    }
 
     public boolean maior(String s, int i) {
         Boolean a;
