@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -68,7 +63,7 @@ public class DenunciaTest {
         d9 = new Denuncia(9, titulo, frase, foto, tipo.get(0), null);                                     //Classe inválida 9
         d10 = new Denuncia(10, titulo, frase, foto, tipo.get(0), fraseMaior);                   //Classe inválida 10
         
-        d = d10;       //Classe sendo testada
+        d = d1;       //Classe sendo testada
     }
 
     @After
@@ -81,16 +76,8 @@ public class DenunciaTest {
     @Test
     public void testTituloDenuncia() {
         System.out.println("TITULO");
-        if (d.getTituloDenuncia() != null) {
-            System.out.println("Titulo não é nulo");
-            if (!maior(d.getTituloDenuncia(), 30)) {
-                System.out.println("Tamanho dentro do esperado: " + d.getTituloDenuncia().length() + "\n");
-            } else {
-                System.out.println("Tamanho maior que o esperado: " + d.getTituloDenuncia().length() + "\n");
-            }
-        } else {
-            System.out.println("Campo nulo");
-        }
+        assertNotNull(d.getTituloDenuncia());
+        assertTrue(!maior(d.getTipoDenuncia(), 30));
     }
 
     /**
@@ -99,16 +86,8 @@ public class DenunciaTest {
     @Test
     public void testDescricaoDenuncia() {
         System.out.println("DESCRIÇÃO");
-        if (d.getDescricaoDenuncia() != null) {
-            System.out.println("Descrição não é nulo");
-            if (!maior(d.getDescricaoDenuncia(), 255)) {
-                System.out.println("Tamanho dentro do esperado: " + d.getDescricaoDenuncia().length() + "\n");
-            } else {
-                System.out.println("Tamanho maior que o esperado: " + d.getDescricaoDenuncia().length() + "\n");
-            }
-        } else {
-            System.out.println("Campo nulo");
-        }
+        assertNotNull(d.getDescricaoDenuncia());
+        assertTrue(!maior(d.getDescricaoDenuncia(), 255));
     }
 
     /**
@@ -116,11 +95,8 @@ public class DenunciaTest {
      */
     @Test
     public void testTipoDenuncia() {
-        if (tipo.contains(d.getTipoDenuncia())) {
-            System.out.println("Campo válido");
-        } else {
-            System.out.println("Campo válido" + d.getTipoDenuncia());
-        }
+      System.out.println("TIPO");
+        assertTrue(tipo.contains(d.getTipoDenuncia()));
     }
 
     /**
@@ -129,16 +105,8 @@ public class DenunciaTest {
     @Test
     public void testLocalizacaoDenuncia() {
         System.out.println("LOCALIZAÇÃO");
-        if (d.getDescricaoDenuncia() != null) {
-            System.out.println("Descrição não é nulo");
-            if (!maior(d.getLocalizacao(), 255)) {
-                System.out.println("Tamanho dentro do esperado: " + d.getLocalizacao().length() + "\n");
-            } else {
-                System.out.println("Tamanho maior que o esperado: " + d.getLocalizacao().length() + "\n");
-            }
-        } else {
-            System.out.println("Campo nulo");
-        }
+        assertNotNull(d.getLocalizacao());
+        assertTrue(!maior(d.getLocalizacao(), 255));
     }
 
     public boolean maior(String s, int i) {
